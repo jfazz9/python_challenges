@@ -78,9 +78,12 @@ list_of_lists = [[1,5,7,3,44,4,1],
 # A3a:
 list_set = []
 for list in list_of_lists:
-    list_set.append(set(list))
-
+    if len(set(list)) == len(list):
+        list_set.append(list)    
 print(list_set)
+'''list comprehension'''
+print([set()])
+
 # -------------------------------------------------------------------------------------- #
 
 print("\nQ4a\n")
@@ -110,8 +113,3 @@ if prime_checker:
     print('Not prime')
 else:
     print('Prime')
-
-
-
-
-
