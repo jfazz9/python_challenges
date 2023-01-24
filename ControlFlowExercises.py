@@ -18,9 +18,10 @@ print("\nQ1c\n")
 # Q1c: Now only print the even numbers up to the fifth element in the list (e.g. 2, 4, 34)
 x = [2, 5, 4, 87, 34, 2, 1, 31, 103, 99]
 
-# A1c:
+# A1c:  
 y = x[:5]
 y = [a for a in x if a % 2 ==0]
+
 print(y)
 
 # -------------------------------------------------------------------------------------- #
@@ -36,6 +37,7 @@ for name in names:
     first.append(name[0])
 print(first)
 
+right = [name[0] for name in names]
 
 print("\nQ2b\n")
 # Q2b: from the list of names, create another list that consists of only the index of the space in the string
@@ -48,6 +50,8 @@ for name in names:
     index_space.append(name.index(' '))
 print(index_space)
 
+'''list comprehension'''
+print([name.index(' ') for name in names])
 
 
 print("\nQ2c\n")
@@ -57,11 +61,10 @@ names = ["Alan Turing", "Leonardo Fibonacci", "Katherine Johnson", "Annie Easley
 # A2c:
 first_last = []
 for name in names:
-    first_last.append(name[0])
-    first_last.append(name[-1])
-
+    first_last.append(name[0]+ name[-1])
 print(first_last) 
-
+'''list comprehension'''
+print([name[0]+ name[-1] for name in names])
 
 print("\nQ3a\n")
 # Q3a: Here is a list of lists, print only the lists which have no duplicates
@@ -86,13 +89,13 @@ print("\nQ4a\n")
 # they entered
 
 # A4a:
-print('type a number greater than 100')
-user_input = int(input())
-try:
-    while user_input < 100:
+user_input = 0
+while user_input < 100:
+    try:
         print('put in a number greater than 100')
-except ValueError:
-    print('Please type a number')
+        user_input = int(input())
+    except ValueError:
+        print('Please type a number')
 
 
 print("\nQ4b\n")
