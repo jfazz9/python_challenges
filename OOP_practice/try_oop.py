@@ -37,7 +37,7 @@ class Employee(Person):
 
 
 gary = Person('Gary', 'Anderson')
-customer_gary = Customer('Gary', 'Anderson', 'HA1 2LZ')
+customer_gary = Customer('Gary', 'Anderson', 'HA7 9LP')
 customer_gary.print()
 employee_simon = Employee('Simon', 'Chadwick', 99234)
 employee_simon.print()  
