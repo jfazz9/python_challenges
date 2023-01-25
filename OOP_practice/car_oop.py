@@ -1,19 +1,49 @@
 class Car:
-    def __init__(self, colour, style, doors, make):
+    def __init__(self, colour='White', style='SUV', doors = 5, make= 'Volkswagen' , model='Tiguan'): #add 5 arguments to instantiate
         self.colour = colour
         self.style = style
         self.doors = doors
         self.make = make
+        self.model = model
+        self._acceleration = 0
+        self._direction = ''
+        self._brake = 0
 
-    def acceleration(self):
-        pass
+    def acceleration(self, rate):
+        '''add in the speed of acceleration in mph for this method'''
+        if not type(rate) is float:           #checking data type
+            raise TypeError('Only integers allowed')
+        self._acceleration = rate           #applying the 
+        
+    def check_acceleration(self):
+        '''returns the accelration speed'''
+        print(f'your {self.make} {self.model} will acclerate from 0-60 in: {self._acceleration} seconds!')
 
-    def brake(self):
-        pass
+    def brake(self, distance):
+        if not type(distance) is int:
+            raise TypeError('only numbers allowed')
+        self._brake = distance
+
+    def braking_distance(self):
+        '''implement the braking distance in metres'''
+        print(f'The braking distance of your {self.make} {self.model} is {self._brake} metres')
 
     def steer(self):
-        pass
-
+        '''choose a direction in which you want to steer North, East, South, West'''
+        directions = ['north', 'east', 'south', 'west']
+        print('Please choose a direction in which you want to steer? \n North, East, South or West?')
+        
+        try:
+            direction = str(input()).lower()
+            if direction in directions:
+                self._direction = direction
+        except ValueError('please enter a direction, North, East, South or West...') as ve:
+            print(ve)
+                
+        
+    
+    def direction_car_facing(self):
+        print(f'{self.make} {self.model} is currently facing {self._direction}')
     def park(self):
         pass
 
@@ -29,6 +59,7 @@ class Door(Car):
 
     def shut(self):
         pass
+
     def lock_door(self):
         pass
 
@@ -42,4 +73,4 @@ class Window(Door):
         self.material = material
         super().__init__(handle)
     
-    
+
