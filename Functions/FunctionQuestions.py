@@ -4,13 +4,13 @@ print("\nQ1a\n")
 # hint: range(1, n) returns a collection of the numbers from 1 to n-1
 
 # A1a:
-def listed(num):
+def listed(num= int):
     listed = []
-    for a in range(2, num+1):
+    for a in range(1, num+1):
         if num % a == 0:
             listed.append(a)
     return listed
-print(listed(12))
+print(listed(14))
 
 print("\nQ1b\n")
 # Q1b: Write a function which takes in two integers as arguments and returns true if one of the numbers
@@ -31,6 +31,7 @@ def factor_of(one = int, two = int):
 
 print(factor_of(7,4))
 
+
 # -------------------------------------------------------------------------------------- #
 
 print("\nQ2a\n")
@@ -39,11 +40,11 @@ alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
              "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
 
 # A2a:
-def alpha_index() -> str:
-    letter= input('whats your letter')
+def alpha_index(letter= str) -> str:
     return alphabet.index(letter)
 
-print(alpha_index())
+char = input()
+print(alpha_index(char))
 
 print("\nQ2b\n")
 # Q2b: create a function which takes a persons name as an input string and returns an
@@ -51,13 +52,13 @@ print("\nQ2b\n")
 # e.g. f("bob") = "1141" as "b" is in position 1 and "o" is in position 14
 
 # A2b:
-def find_more_index():
-    name = input('add name ')
+def find_more_index(name):
     numbers = []
     for char in name:
         numbers.append(alphabet.index(char))
     return ''.join(str(a) for a in numbers)
-print(find_more_index())
+
+print(find_more_index(char))
 
 print("\nQ2c\n")
 # Q2c: Create a function which turns this ID into a password. The function should subtract
