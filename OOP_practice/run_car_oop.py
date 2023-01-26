@@ -1,4 +1,4 @@
-from car_oop import Car
+from car_oop import Car, Door
 
 
 def create_car(name= 'BMW', *args):
@@ -35,3 +35,6 @@ if __name__ == '__main__':
     print(toyota_the_third, ': third toyota')
     return_information(sheila_the_car)
     return_information(gary_the_car)
+
+    '''instantiate the door'''
+    gary_the_car = Door()

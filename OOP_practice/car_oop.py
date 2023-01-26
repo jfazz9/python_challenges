@@ -1,5 +1,5 @@
 class Car:
-    def __init__(self, make= 'Volkswagen',  model='Tiguan', colour='White', style='SUV', doors = 5,): #add 5 arguments to instantiate
+    def __init__(self, make= 'Volkswagen',  model='Tiguan', colour='White', style='SUV', doors = 5): #add 5 arguments to instantiate
         self.colour = colour
         self.style = style
         self.doors = doors
@@ -56,29 +56,36 @@ class Car:
 
 
 class Door(Car):
-    def __init__(self, colour, open_style = 'Regular Doors', lock_type='automatic lock with key', handle= 'trigger'):
+    def __init__(self, colour = 'Dark', open_style = 'Regular Doors', lock_type='automatic lock with key', handle= 'trigger'):
+
         super().__init__(colour)
         self.open_style = open_style
         self.lock_type = lock_type
         self.handle = handle
+        self.__status = ''
 
     def open(self):
-        pass
+        self.__status = 'open'
 
     def shut(self):
-        pass
+        self.__status = 'closed'
 
     def lock_door(self):
-        pass
+        self.__status = 'locked'
 
     def wind_window_down(self):
-        pass
+        self.__window_status = 'window is winded down'
+    
+    def window_status(self):
+        self.__
 
 class Window(Door):
     def __init__(self, tint, thickness, material, handle):
-        self.tint = tint
-        self.thickness = thickness
-        self.material = material
+        self.__tint = tint
+        self.__thickness = thickness
+        self.__material = material
         super().__init__(handle)
+
+    
     
 
