@@ -1,50 +1,95 @@
 import csv
-'''with open('original_file.csv', 'r') as f:
-    reader = csv.DictReader(f)
-    with open('new_file.csv', 'w', newline='') as f:
-        fieldnames = ['first_name']
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in reader:
-            writer.writerow({'first_name': row['first_name']})'''
+import os
 
-class file_sort:
+class file_sort_csv:
     def __init__(self, file_name):
         self.file_name = file_name
-        self.updated_format = []
-        self.creating_new = ''
+        self.temp_open = ''
+        self.file_reader = ''
+        self.columns = []
+        self.list_format = []
 
     def __str__(self):
-        return f'this class can open, transform and write files'
+        return f'this class can open, transform, write and delete files'
 
     def open_file(self):
-        with open(self.file_name) as file:
-            self.updated_format = csv.DictReader(file)
-            for row in self.updated_format:
-                print(row['firstName'])
+        '''call on this function to open the file so that self.file_reader can contain 
+        the DictReader class and iterate over each time'''
+        try:
+            self.temp_open = open(self.file_name)
+            self.file_reader = csv.reader(self.temp_open, delimiter=',') 
+            for row in self.file_reader:
+                self.list_format.append(row)       
+        except FileNotFoundError as fnfe:
+            print("Error is: ", fnfe)
 
-    def create_new_file(self):
-        new_file = open('testing.csv', 'w')
-        self.updated_format = new_file
-        new_file.close()
+    def close_file(self):
+        try:
+            self.temp_open.close()
+        except:
+            print('didn\'t close anything')
 
-    def get_first_name(self):
-        
-        for a in self.updated_format:
-            self.updated_format.write(a)
+    def add_column(self, col_no):
+        '''choose a column that you want to add'''
+        for row in self.list_format:    
+            self.columns.append(row[col_no])
 
-    def get_last_name(self):
-        with open(self.updated_format, 'a') as new_file:
-            for a in self.updated_format[2]:
-                self.updated_format.write(a)
 
-    def get_first_part_email(self):
+    def add_column_info_certain_criteria(self, column, splitter = '@'):
         pass
 
+    def check_file(self):
+        for row in self.file_reader:
+            print(row)
+
+    def check_variables(self):
+        print(f'this is the current compilation {self.list_format}')
+        print(f'columns of file {self.columns}')
+        print(f'This is the file reader: {self.file_reader}')
+
+    def add_all_info(self):
+        with open('testing.csv', 'w', newline='') as file:
+            headers = ['firstName', 'lastName', 'email']
+            writer = csv.DictWriter(file, fieldnames=headers)
+            writer.writeheader()
+            for row in self.file_reader:
+                email_first = row['email'].split('@')
+                writer.writerow({'firstName': row['firstName'], 'lastName': row['lastName'], 'email': email_first[0]})
+
+    def break_columns(self, column_name):
+        compiler = self.list_format.split(column_name)
+ 
+
+
+    def write(self):
+        with open('testing.csv', 'w', newline='') as file:
+            writer = csv.writer(file)
+            for row in self.list_format:
+                writer.writerow(self.columns)
+
+
+    def delete_file(self, filename):
+        if os.path.exists(filename):
+            os.remove(filename)
 
 
 if __name__ == '__main__':
-    file = file_sort('user_details.csv')
+    file = file_sort_csv('user_details.csv')
     file.open_file()
-    print(file)
-    print(file.updated_format)
+    # file.check_variables()
+    file.add_column(1)
+    file.add_column(2)
+    file.add_column(4)
+    file.write()
+    file.check_variables()
+
+
+
+
+
+
+
+
+
+
+    
